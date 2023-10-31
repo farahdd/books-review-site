@@ -1,0 +1,160 @@
+.book-detail {
+    padding: 30px 0;
+    display: flex;
+    gap: 25px;
+ }
+.book-detail-sticky-block {
+    position: -webkit-sticky;
+    position: sticky;
+    display: block;
+    top: 30px;
+    flex-basis: 280px;
+    flex-grow: 0;
+}
+.book-cover {
+    width: 250px;
+    margin-bottom: 15px;
+}
+
+.book-cover img {
+    object-fit: contain;
+    object-position: center;
+    box-shadow: 0px 1px 5px #545454;
+    width: 100%;
+}
+.book-detail-content {
+    padding: 15px;
+}
+.book-detail-info {
+    width: 600px;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+
+.book-detail-title {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.book-detail-author{
+    padding: 0 7px;
+    margin-bottom: 15px;
+}
+
+.book-detail-author a{
+    font-family: "Cormorant Garamond", sans-serif;
+    font-size: 22px;
+    color: #565656;
+    font-weight: 500;
+}
+
+.book-detail-author a:hover {
+    text-decoration: underline;
+    color: #222121;
+}
+.book-description {
+    margin-bottom: 15px;
+}
+
+.genre-detail {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.genre-detail {
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.genre-detail a, .genre-detail a:visited {
+    color: #565656;
+}
+
+.genre-detail a:hover {
+    color: #222121;
+    text-decoration: underline;
+}
+
+.book-detail-info-block span{
+    display: inline-block;
+}
+.book-detail-edition p{
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.edition-info-item span {
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+.item-desc {
+    font-weight: 600;
+}
+
+.book-review-btn .btn{
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    width: 210px;
+    font-size: 16px;
+}
+
+.book-detail-sticky-block .book-rating {
+  align-items: center;
+  justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    font-size: 26px;
+}
+
+.book-detail-container {
+    margin: 50px 0;
+}
+.post-container {
+    border: 2px solid black;
+    margin-bottom: 30px;
+    padding: 15px;
+}
+
+.post-container .post-book-rating {
+    font-size: 20px !important;
+    align-items: center;
+
+}
+
+.post-author {
+    margin-bottom: 12px;
+}
+.post-athor-details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 7px;
+}
+.post-author-img {
+    width: 55px;
+    height: 55px;
+}
+.post-author-name a, .post-author-name a:visited{
+    font-size: 18px;
+    color: black;
+    font-weight: 600;
+}
+
+.post-author-name a:hover {
+    color: #545454;
+    text-decoration: underline;
+}
+.post-created {
+    font-size: 13px;
+    color: #565656;
+}
+.post-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}

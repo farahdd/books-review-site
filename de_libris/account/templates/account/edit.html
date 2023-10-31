@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Редактирование профиля{% endblock %}
+
+{% block content %}
+ <h2 class="second-header">Настройки профиля</h2>
+ <p class='extra-text'>Вы можете редактировать профиль</p>
+ <form method="post" enctype="multipart/form-data">
+ {{ user_form.as_p }}
+ {{ profile_form.as_p }}
+ {% csrf_token %}
+ <p><input class='btn' type="submit" value="Сохранить Изменения"></p>
+ </form>
+{% endblock %}

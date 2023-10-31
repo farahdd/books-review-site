@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% load static %} {% block title %} {% if genre %}{{
+genre.name }}{% else %}DeLibris{% endif %} {% endblock %} {% block content %}
+
+  <h1 class="main-header">{{ genre.name }}</h1>
+  <div class="books-block">
+    {% for book in books %}
+    <div class="book-card">
+      <div class="book-card-img-container">
+        <a href="{{ book.get_absolute_url }}">
+          <img
+            class="book-card-img"
+            src="{% if book.image %}{{ book.image.url }}{% else %}{%
+                    static 'img/no_image.png' %}{% endif %}"
+          />
+        </a>
+      </div>
+      <div class="book-card-detail">
+          <div class="book-card-detail-item">
+            <span class="item-desc">Рейтинг: </span>
+                <div class="book-rating">
+                    {{ book.averageReview }}<i class="fa-regular fa-star"></i>
+                </div>
+            </div>
+        <div class="book-card-detail-item">
+          <a class="book-card-title" href="{{ book.get_absolute_url }}"
+            >{{ book.title }}</a
+          >
+        </div>
+        <div class="book-card-detail-item">
+          <a class="item-desc" href="{{ book.author.get_absolute_url }}"
+            >{{ book.author.name }}</a
+          >
+        </div>
+        <div class="book-card-detail-item">
+          <div class="edition-info-item">
+            <span class="item-desc">Год издания:</span>
+            <span class="edition-info-text">{{ book.published }}</span>
+          </div>
+          <div class="edition-info-item">
+            <span class="item-desc">ISBN:</span>
+            <span class="book-edition-info-text">{{ book.isbn }}</span>
+          </div>
+        </div>
+        <div class="book-card-detail-desc">
+            <p>{{ book.description|truncatewords:40 }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% include "book/includes/pagination.html" with page=books %}
+    
+  </div>
+
+{% endblock %}

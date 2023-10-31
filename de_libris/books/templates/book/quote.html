@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+ Новая цитата
+{% endblock %}
+
+{% block content %}
+<div>
+   {% if quote %}
+   <h2 class="second-header">Цитата опубликована.</h2>
+   <p><a href="{{ book.get_absolute_url }}">Вернуться к книге</a></p>
+   {% else %}
+   {% include "book/includes/quote_form.html" %}
+   {% endif %}
+</div>
+{% endblock  %}

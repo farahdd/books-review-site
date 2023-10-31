@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+ <p class='extra-text'>Здесь пока ничего нет.</p>
+ <p class='extra-text'>Вы можете:</p>
+ <ul>
+    <li><a href="{% url 'edit' %}">Изменить личные данные на странице</a></li>
+    <li><a href="{% url 'password_change' %}">Поменять пароль</a></li>
+ </ul>
+ 
+{% endblock %}

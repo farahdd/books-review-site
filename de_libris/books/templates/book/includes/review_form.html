@@ -1,0 +1,78 @@
+<div class="book-detail">
+    <div class="book-detail-sticky-block">
+          <div class="book-cover">
+          <img
+              src="{{ book.image.url }}"
+          />
+          </div>
+          <div class="book-rating">
+              <div>
+                  {{ book.averageReview }}
+              </div>
+              <i class="fa-regular fa-star"></i>
+          </div>
+    </div>
+    <div class="book-detail-content">
+        <div class="book-detail-info">
+                <h1 class="main-header">{{ book.title }}</h1>
+              <p class="book-detail-author"><a href="">{{ book.author.name }} </a></p>
+              
+              <div class="book-detail-info-block">
+                  <p class="genre-detail">
+                  <span>Жанр:</span>
+                  <a href="{{ book.genre.get_absolute_url }}"> {{ book.genre }} </a>
+                  </p>
+                  <div class="book-detail-edition">
+                      <p>Информация об издании</p>
+                      <div class="edition-info">
+                          <div class="edition-info-item">
+                          <span class="item-desc">Год издания:</span>
+                          <span class="item-text">{{ book.published }}</span>
+                          </div>
+                          <div class="edition-info-item">
+                          <span class="item-desc">ISBN:</span>
+                          <span class="item-text">{{ book.isbn }}</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <h3 class='form-header'>Напишите свою рецензию:</h3>
+<form class='review-form' method="POST">
+    {% csrf_token %}
+    <div>
+        <label>Как вы оцениваете данную книгу?</label>
+        <br>
+        <div class="rate">
+            <input type="radio" name="rating" id="rating10" value="5" required><label for="rating10" title="5"></label>
+            <input type="radio" name="rating" id="rating9" value="4.5" required><label for="rating9" title="4.5" class="half"></label>
+            <input type="radio" name="rating" id="rating8" value="4" required><label for="rating10" title="4"></label>
+            <input type="radio" name="rating" id="rating7" value="3.5" required><label for="rating7" title="3.5" class="half"></label>
+            <input type="radio" name="rating" id="rating6" value="3" required><label for="rating6" title="3"></label>
+            <input type="radio" name="rating" id="rating5" value="2.5" required><label for="rating5" title="2.5" class="half"></label>
+            <input type="radio" name="rating" id="rating4" value="2" required><label for="rating4" title="2"></label>
+            <input type="radio" name="rating" id="rating3" value="1.5" required><label for="rating3" title="1.5" class="half"></label>
+            <input type="radio" name="rating" id="rating2" value="1" required><label for="rating2" title="1"></label>
+            <input type="radio" name="rating" id="rating1" value="0.5" required><label for="rating1" title="0.5" class="half"></label>
+        </div>
+
+        <p class="form-p">
+            <label for="title">Заголовок рецензии</label><br>
+            <input type="text" class="form-control" name="title">
+        </p>
+        <p class="form-p">
+            <label for="review">Рецензия</label><br>
+            <textarea name="review" rows="5" class="form-control"></textarea>
+        </p>
+        <p>
+            <input class='btn' type="submit" value="Опубликовать">
+        </p>
+    </div>
+</form>
+          
+          
+          
+    </div>
+</div>
+

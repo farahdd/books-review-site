@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}{{ author.name }}{{ author.surname }}{% endblock  %}
+{% block content %}
+<div class="author-detail">
+    <div class="author-detail-left">
+        <div class="author-img">
+            <a href="{( author.get_absolute_url )}">
+                <img src="{% if author.image %}{{ author.image.url }}{% endif %}" >
+            </a>
+        </div>
+    </div>
+
+    <div class="author-detail-main">
+        <div class="author-detail-info">
+            <h1 class="main-header">{{ author.name }}{{ author.surname }}</h1>
+            <div class="author-detail-extra">
+                <span class="item-desc">Дата рождения:</span>
+                <span class="item-text">{{ author.date_of_birth }}</span>
+            </div>
+            {% if author.date_of_death %}
+            <div class="author-detail-extra">
+                <span class="item-desc">Дата рождения:</span>
+                <span class="item-text">{{ author.date_of_death }}</span>
+            </div>
+            {% endif %}
+            <div class="author-bio">
+                <p>{{ author.bio }}</p>
+            </div>
+        </div>
+        <h2 class="second-header">Книги</h2>
+        {% with books.count as total_books %}
+        <div class="text">
+            <p>Всего книг: <b>{{ total_books }} </b></p>
+        </div>
+        {% endwith %} 
+        <div class="books-block">
+            {% for book in books %}
+            <div class="book-card">
+              <div class="book-card-img-container">
+                <a href="{{ book.get_absolute_url }}">
+                  <img
+                    class="book-card-img"
+                    src="{% if book.image %}{{ book.image.url }}{% else %}{%
+                            static 'img/no_image.png' %}{% endif %}"
+                  />
+                </a>
+              </div>
+              <div class="book-card-detail">
+                  <div class="book-card-detail-item">
+                    <span class="item-desc">Рейтинг: </span>
+                        <div class="book-rating">
+                            {{ book.averageReview }}<i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+                <div class="book-card-detail-item">
+                  <a class="book-card-title" href="{{ book.get_absolute_url }}"
+                    >{{ book.title }}</a
+                  >
+                </div>
+                <div class="book-card-detail-item">
+                  <a class="item-desc" href="{{ book.author.get_absolute_url }}"
+                    >{{ book.author.name }}</a
+                  >
+                </div>
+                <div class="book-card-detail-item">
+                  <div class="edition-info-item">
+                    <span class="item-desc">Год издания:</span>
+                    <span class="edition-info-text">{{ book.published }}</span>
+                  </div>
+                  <div class="edition-info-item">
+                    <span class="item-desc">ISBN:</span>
+                    <span class="book-edition-info-text">{{ book.isbn }}</span>
+                  </div>
+                </div>
+                <div class="book-card-detail-desc">
+                    <p>{{ book.description|truncatewords:40 }}</p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            {% include "book/includes/pagination.html" with page=books %}
+            
+          </div>
+    </div>
+</div>
+{% endblock  %}

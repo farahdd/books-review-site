@@ -1,0 +1,51 @@
+<div class="book-detail">
+    <div class="book-detail-sticky-block">
+          <div class="book-cover">
+          <img
+              src="{{ book.image.url }}"
+          />
+          </div>
+          <div class="book-rating">
+              <div>
+                  {{ book.averageReview }}
+              </div>
+              <i class="fa-regular fa-star"></i>
+          </div>
+    </div>
+    <div class="book-detail-content">
+        <div class="book-detail-info">
+                <h1 class="main-header">{{ book.title }}</h1>
+              <p class="book-detail-author"><a href="">{{ book.author.name }} </a></p>
+              
+              <div class="book-detail-info-block">
+                  <p class="genre-detail">
+                  <span>Жанр:</span>
+                  <a href="{{ book.genre.get_absolute_url }}"> {{ book.genre }} </a>
+                  </p>
+                  <div class="book-detail-edition">
+                      <p>Информация об издании</p>
+                      <div class="edition-info">
+                          <div class="edition-info-item">
+                          <span class="item-desc">Год издания:</span>
+                          <span class="item-text">{{ book.published }}</span>
+                          </div>
+                          <div class="edition-info-item">
+                          <span class="item-desc">ISBN:</span>
+                          <span class="item-text">{{ book.isbn }}</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <h3 class='form-header'>Напишите свою цитату:</h3>
+<form class='review-form' method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+</form>
+          
+          
+          
+    </div>
+</div>
+

@@ -1,0 +1,81 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #fff;
+}
+
+.header .container {
+  font-size: 16px;
+  padding: 17px 7px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid black;
+}
+
+.logo-footer {
+  font-family: "Cormorant Garamond", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 65px;
+  letter-spacing: 0.5px;
+  color: rgb(130, 43, 43);
+}
+
+.logo a {
+  font-family: "Cormorant Garamond", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 33px;
+  letter-spacing: 0.5px;
+  color: rgb(130, 43, 43);
+}
+.base-links-item {
+  list-style: none;
+  display: inline-block;
+  margin-right: 25px;
+}
+
+.base-links-item a,
+.base-links-item a:visited {
+  font-weight: 500;
+  color: #111;
+  text-decoration: none;
+}
+
+.base-links-item a:hover {
+  color: #81807a;
+}
+
+.base-links-item a:active {
+  color: #3b3a38;
+}
+/* 
+body {
+    position: relative;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+} */
+
+.footer .container {
+  font-size: 16px;
+  padding: 30px 7px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer .base-links-item {
+  list-style: none;
+  display: block !important;
+  margin-bottom: 5px;
+}
+

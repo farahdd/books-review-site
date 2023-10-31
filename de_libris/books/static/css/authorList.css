@@ -1,0 +1,23 @@
+
+.writer-img {
+    width: 200px;
+    height: 200px;
+}
+
+
+.writer-box .btn {
+    width: 150px;
+    padding: 10px;
+}
+
+.writer-name a, .writer-name a:visited{
+    color: #000;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.writer-name:hover {
+    color: #313131;
+    text-decoration: underline;
+}
+

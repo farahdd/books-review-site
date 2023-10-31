@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+ Новая рецензия
+{% endblock %}
+
+{% block content %}
+<div>
+   {% if review %}
+   <h2 class="second-header">Рецензия опубликована.</h2>
+   <p><a href="{{ book.get_absolute_url }}">Вернуться к книге</a></p>
+   {% else %}
+   {% include "book/includes/review_form.html" %}
+   {% endif %}
+</div>
+{% endblock  %}

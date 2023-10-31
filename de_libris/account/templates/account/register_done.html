@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Успешно!{% endblock %}
+{% block content %}
+ <h1 class="main-header">Рады приветсвовать {{ new_user.first_name }}!</h1>
+ <p class='extra-text'>
+ Аккаунт был успешно создан.
+ Теперь вы можете <a href="{% url "login" %}">войти на свою страницу</a>.
+ </p>
+{% endblock %}

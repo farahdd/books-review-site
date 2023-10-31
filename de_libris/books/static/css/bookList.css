@@ -1,0 +1,55 @@
+.books-block {
+    margin: 30px 0;
+    padding: 30px 15px;
+}
+.book-card {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    border: 2px solid black;
+    margin-bottom: 30px;
+}
+
+.book-card .book-rating {
+    display: inline-block !important;
+}
+.book-card-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+
+.book-card-img-container a {
+    width: 200px;
+}
+
+.book-card-img-container img {
+    width: 200px;
+}
+
+
+.book-card-detail {
+    padding: 8px 5px ;
+}
+
+.book-card p {
+    padding: 0 7px;
+    margin-bottom: 5px;
+}
+
+.book-card a, .book-card:visited {
+    color: #000;
+}
+
+.book-card a:hover {
+    color: #424141;
+    text-decoration: underline;
+}
+
+.book-card-author {
+    font-size: 14px;
+    font-weight: 400;
+    font-style: italic;
+}
+

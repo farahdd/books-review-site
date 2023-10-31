@@ -1,0 +1,14 @@
+.extra-text {
+    margin: 15px 0;
+}
+
+form p {
+    margin: 15px 0;
+}
+
+form {
+    padding: 30px;
+    width: 500px;
+    margin-bottom: 20px;
+    border: 2px solid black;
+}

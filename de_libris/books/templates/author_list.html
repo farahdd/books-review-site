@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Писатели{% endblock  %}
+
+{% block content %}
+<h1 class="main-header">Писатели</h1>
+<div class="writers-container">
+    {% for author in authors %}
+        <div class="writer-box">
+                <div class="post-container">
+                    <div class="post-author">
+                            <div class="post-athor-details">
+                                <div class="writer-img">
+                                    <a href="{% url 'books:author_detail' author.id author.slug %}">
+                                        <img  id="author_avatar" src="{% if author.image %}{{ author.image.url }}{% endif %}" >
+                                    </a>
+                                </div>
+                                <div class="post-author-name"><a href="{% url 'books:author_detail' author.id author.slug %}">{{author.name }}{{author.surname }}</a></div>
+                            </div>
+                            </div>
+                        <div class="author-bio">
+                                <p>{{ author.bio|truncatewords:20 }}</p>
+                        </div>
+                        <div class="authore-more">
+                            <button class="btn" href="{% url 'books:author_detail' author.id author.slug %}">Узнать больше</button>
+                        </div>
+                    </div>
+            
+        </div>
+    {% endfor %}
+</div>
+{% endblock  %}

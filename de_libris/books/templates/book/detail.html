@@ -1,0 +1,128 @@
+{% extends "base.html" %} {% load static %} {% block title %} {{ book.title }}
+{% endblock %} {% block content %}
+<div class="book-detail">
+  <div class="book-detail-sticky-block">
+        <div class="book-cover">
+        <img
+            src="{% if book.image %}{{ book.image.url }}{% else %}
+                    {% static 'img/no_image.png' %}{% endif %}"
+        />
+        </div>
+        <div class="book-rating">
+            <div>
+                {{ book.averageReview }}
+            </div>
+            <i class="fa-regular fa-star"></i>
+        </div>
+        <div class="book-review-btn">
+            <button class="btn" href="{% url 'books:create_review' book.id book.slug %}">Написать Рецензию <i class="fa-solid fa-feather"></i></button>
+            
+        </div>
+        <div class="book-review-btn">
+        <button class="btn" href="{% url 'books:submit_quote' book.id book.slug %}">Добавить Цитату</button>
+        </div>
+  </div>
+  <div class="book-detail-content">
+      <div class="book-detail-info">
+                <h1 class="main-header">{{ book.title }}</h1>
+            <p class="book-detail-author"><a href="">{{ book.author.name }} </a></p>
+            <div class="book-description">
+                <p>{{ book.description|linebreaks }}</p>
+            </div>
+            <div class="book-detail-info-block">
+                <p class="genre-detail">
+                <span>Жанр:</span>
+                <a href="{{ book.genre.get_absolute_url }}"> {{ book.genre }} </a>
+                </p>
+                <div class="book-detail-edition">
+                    <p>Информация об издании</p>
+                    <div class="edition-info">
+                        <div class="edition-info-item">
+                        <span class="item-desc">Год издания:</span>
+                        <span class="item-text">{{ book.published }}</span>
+                        </div>
+                        <div class="edition-info-item">
+                        <span class="item-desc">ISBN:</span>
+                        <span class="item-text">{{ book.isbn }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 class="second-header">Рецензии</h2>
+        {% with reviews_total.count as total_reviews %}
+        <p>Всего рецензий: <b>{{ total_reviews }} </b></p>
+        {% endwith %} 
+        <div class="book-detail-container">
+            {% for review in reviews %}
+            <div class="post-container">
+                <div class="post-author">
+                    <div class="post-athor-details">
+                        <div class="post-author-img">
+                            <a href="">
+                                <img  id="author_avatar" src="{% if review.author.photo %}{{ review.author.photo.url }}{% else %}{% static 'img/no_avatar.png' %}{% endif %}" >
+                            </a>
+                        </div>
+                        <div class="post-author-name"><a href="">{{review.author.username }}</a></div>
+                    </div>
+                    <div class="post-created">Опубликовано: {{ review.created }}</div>
+                </div>
+                
+                    <div class="post-title-rating">
+                        <div class="post-book-rating book-rating">
+                            <i class="fa-regular fa-star"></i>
+                            <div>
+                                {{ book.averageReview }}
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="post-title">{{ review.title }}</h3>
+                    <div class="post-body">
+                        <p>{{ review.review}}</p>
+                    </div>
+                </div>
+
+                {% empty %}
+                <p>На эту книгу пока нет рецензий.</p>
+            </div>
+            {% endfor %}
+            {% if reviews %}
+            <div class="post-more-btn">
+                <button href="{% url 'books:review_list' book.id book.slug %}" class="btn">Показать все</button> 
+            {% endif %}
+        </div>
+        
+        <div class="book-detail-container">
+            <h2 class="second-header">Цитаты</h2>
+            {% with quotes.count as total_quotes %}
+            <p>Всего цитат: <b>{{ total_quotes }} </b></p>
+            {% endwith %} 
+            {% for quote in quotes %}
+                <div class="post-container">
+                    <div class="post-author">
+                            <div class="post-athor-details">
+                                <div class="post-author-img">
+                                    <a href="">
+                                        <img  id="author_avatar" src="{% if user.photo %}{{ user.photo.url }}{% else %}{% static 'img/no_avatar.png' %}{% endif %}" >
+                                    </a>
+                                </div>
+                                <div class="post-author-name"><a href="">{{quote.author.username }}</a></div>
+                            </div>
+                            <div class="post-created">Опубликовано: {{ quote.created }}</div>
+                    </div>
+                    <h3 class="post-title">{{ quote.title }}</h3>
+                    <div class="post-body">
+                            <p>{{ quote.quote}}</p>
+                    </div>
+
+                    {% empty %}
+                    <div>
+                    <p>На эту книгу пока нет цитат.</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

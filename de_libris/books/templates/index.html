@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Главная{% endblock  %}
+
+{% block content %}
+<div class="best-books-container">
+    <h2 class="second-header">Книги, которые нравятся другим</h2>
+{% for book in books %}
+{% if book.averageReview > 4.5 and book.averageReview <= 5 %}
+
+<div class="book-card">
+    <div class="book-card-img-container">
+      <a href="{{ book.get_absolute_url }}">
+        <img
+          class="book-card-img"
+          src="{% if book.image %}{{ book.image.url }}{% else %}{%
+                  static 'img/no_image.png' %}{% endif %}"
+        />
+      </a>
+    </div>
+    <div class="book-card-detail">
+        <div class="book-card-detail-item">
+          <span class="item-desc">Рейтинг: </span>
+              <div class="book-rating">
+                  {{ book.averageReview }}<i class="fa-regular fa-star"></i>
+              </div>
+          </div>
+      <div class="book-card-detail-item">
+        <a class="book-card-title" href="{{ book.get_absolute_url }}"
+          >{{ book.title }}</a
+        >
+      </div>
+      <div class="book-card-detail-item">
+        <a class="item-desc" href="{{ author.get_absolute_url }}"
+          >{{ book.author.name }}</a
+        >
+      </div>
+      <div class="book-card-detail-item">
+        <div class="edition-info-item">
+          <span class="item-desc">Год издания:</span>
+          <span class="edition-info-text">{{ book.published }}</span>
+        </div>
+        <div class="edition-info-item">
+          <span class="item-desc">ISBN:</span>
+          <span class="book-edition-info-text">{{ book.isbn }}</span>
+        </div>
+      </div>
+      <div class="book-card-detail-desc">
+          <p>{{ book.description|truncatewords:40 }}</p>
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% endfor %}
+</div>
+
+<h2 class="second-header">Жанры</h2>
+<div class="genres-container">
+    {% for genre in genres %}
+    <div class="genre-block">
+        <div class="genre-illustration-block">
+            <div class="genre-illustration">
+                <a href="">
+                    <img  class="genre-illustration-img" src="{% if genre.image %}{{ genre.image.url }}{% endif %}">
+                </a>
+            </div>
+        </div>
+        <div class="genre-name">
+    <a href="{{ genre.get_absolute_url }}">{{ genre.name }}</a>
+        </div>
+</div>
+    {% endfor %}
+</div>
+
+{% endblock  %}

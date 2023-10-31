@@ -1,0 +1,33 @@
+form .btn {
+    width: 150px;
+    margin: 10px 0;
+}
+
+.form-header {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.review-form {
+    margin: 0 auto;
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px 20px;
+}
+
+input.form-control  {
+    height: 50px;
+}
+
+form {
+    padding: 30px;
+}
+
+textarea.form-control {
+    resize: none;
+    height: 150px;
+}

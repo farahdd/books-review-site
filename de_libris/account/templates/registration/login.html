@@ -1,0 +1,25 @@
+{% extends "base.html" %} 
+
+{% block title %}Войти{% endblock %} 
+
+{% block content %}
+<h1 class="main-header">Войти в аккаунт</h1>
+{% if form.errors %}
+<p class='login-error'>Имя пользователя и пароль не совместимы. Пожалуйста, попробуйте еще раз.</p>
+{% else %}
+<p class='extra-text'>Воспользуйтесь данной формой для входа в аккаунт:</p>
+{% endif %}
+<div class="login-form">
+  <form action="{% url 'login' %}" method="post">
+    {{ form.as_p }} {% csrf_token %}
+    <input  type="hidden" name="next" value="{{ next }}" />
+    <p><input class='btn' type="submit" value="Log-in" /></p>
+  </form>
+  <p>
+    <a href="{% url "password_reset" %}">
+    Забыли пароль?
+    </a>
+    <p>Нет аккаунта? Не беда! Вы можете  <a href="{% url 'register' %}">пройти регистрацию</a>.</p>
+    </p>
+</div>
+{% endblock %}
